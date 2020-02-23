@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
+* {
+    font-family: 'Inconsolata', monospace;
+}
+
+.content {
+
+    z-index: 1;
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background:linear-gradient(-135deg,#0ff,#00f);
+    border: 1vw solid white;
+
+    // notch
+    // clip-path: polygon(0% 150px, calc(0% + 150px) 0%, 100% 0%, 100% 100%, 0% 100%);
+
+}
+
+app-nav {
+    position: fixed;
+    z-index: 2;
+}
