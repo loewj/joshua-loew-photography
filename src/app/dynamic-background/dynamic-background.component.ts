@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { gsap, TimelineMax, Power1, TweenMax } from 'gsap';
+import { TimelineMax, Power1 } from 'gsap';
 
 @Component({
   selector: 'app-dynamic-background',

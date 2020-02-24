@@ -1,8 +1,28 @@
+* {
+    position: relative;
+    z-index: 3;
+    color: white;
+}
+
 .menu-icon {
-    position: fixed;
     font-size: 2em;
     margin-top: 30px;
     margin-left: calc(2vw - 5px); 
-    color: white;
     cursor: pointer;
+}
+
+ul {
+    padding: 0; /* To remove default left padding */
+}
+
+.menu-items-container {
+    height: 100vh;
+    width: 100vw;
+    font-size: 2em;
+    ul {
+        list-style-type: none;
+        li {
+            margin-bottom: 1em;
+        }
+    }
 }

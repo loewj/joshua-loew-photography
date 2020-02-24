@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
 import { DynamicBackgroundComponent } from './dynamic-background/dynamic-background.component';
 import { NavComponent } from './nav/nav.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { DesignComponent } from './design/design.component';
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
   {
@@ -15,15 +16,27 @@ const appRoutes: Routes = [
     component: DynamicBackgroundComponent,
   },
   {
-    path: 'home',
+    path: 'about',
     component: IntroComponent
+  },
+  {
+    path: 'photography',
+    component: GalleryComponent
+  },
+  {
+    path: 'design',
+    component: DesignComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   },
   { 
     path: '',
     redirectTo: '/landing',
     pathMatch: 'full'
   },
-  { path: '**', redirectTo: '/home', }
+  { path: '**', redirectTo: '/about', }
 ];
 
 @NgModule({
@@ -31,11 +44,13 @@ const appRoutes: Routes = [
     AppComponent,
     IntroComponent,
     DynamicBackgroundComponent,
-    NavComponent
+    NavComponent,
+    DesignComponent,
+    ContactComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
