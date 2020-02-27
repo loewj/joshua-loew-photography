@@ -1,14 +1,14 @@
 <section class="gallery-container">
   <div class="d-flex align-items-center justify-content-center h-100">
-      <div class="d-flex flex-column">
-        <div class="gallery row">
-          <div *ngFor='let image of images; index as i'>
-            <div class="clearfix" *ngIf="i % 3 == 0"></div>
+    <div class="d-flex flex-column">
+      <div class="gallery row">
+        <div *ngFor='let image of images; index as i'>
+          <div class="clearfix" *ngIf="i % 3 == 0"></div>
           <a href='{{ image.imageURL }}'>
             <img width="200" height="200" class='img-thumbnail' src="{{ image.thumbnailURL }}">
           </a>
-          </div>
         </div>
       </div>
+    </div>
   </div>
 </section>

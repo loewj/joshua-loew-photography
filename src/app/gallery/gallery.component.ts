@@ -20,9 +20,10 @@ export class GalleryComponent implements OnInit {
 
   ngAfterViewInit() {
     const c = baguetteBox.run('.gallery', {
-      afterShow: () => {  }
+      buttons: false,
+      fullScreen: true,
+      animation: 'fadeIn'
     });
-    console.log(c);
   }
 
   getImages(): void {

@@ -1,11 +1,14 @@
-    <div class='col'>
+<div class='row navbar-container'>
+    <div class='col sm-4 text-left'>
+        <p>{{ time }}</p>
+    </div>
+    <div class='col sm-4 text-center'>
         <a (click)="toggleNav()" class="material-icons">
             <span *ngIf='navOpen === false'>menu</span>
             <span *ngIf='navOpen === true'>close</span>
         </a>
     </div>
-
-    <!-- <li><a (click)="toggleNav()" routerLink="/about" routerLinkActive="active">about</a></li>
-    <li><a (click)="toggleNav()" routerLink="/photography" routerLinkActive="active">photography</a></li>
-    <li><a (click)="toggleNav()" routerLink="/design" routerLinkActive="active">design</a></li>
-    <li><a (click)="toggleNav()" routerLink="/contact" routerLinkActive="active">contact</a></li> -->
+    <div class='col sm-4 text-right'>
+        <p>{{ weather }}</p>
+    </div>
+</div>

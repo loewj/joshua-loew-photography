@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { DesignComponent } from './design/design.component';
 import { ContactComponent } from './contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
