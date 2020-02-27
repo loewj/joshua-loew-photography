@@ -18,21 +18,7 @@ export class NavComponent implements OnInit {
       paused: true, onComplete: () => {
 
       }
-    })
-    .set('.content', {zIndex: 2})
-      .fromTo('.content', 1,
-        {
-          css: {
-            background: "linear-gradient(-135deg,#0ff,#00f)"
-          }
-        },
-        {
-          css: {
-            background: "linear-gradient(-135deg,#D2ADFF,#7F56B3)"
-          },
-          ease: Power1.easeInOut
-        })
-      ;
+    });
   }
 
   toggleNav() {

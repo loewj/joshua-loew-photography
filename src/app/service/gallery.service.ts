@@ -18,10 +18,28 @@ export class GalleryService {
           thumbnailURL: "/assets/image/thumbnails/brewster_flats_swimmers.jpg"
         },
         {
-          title: "Noon Dune",
+          title: "High Noon Dunes",
           format: "6x7 Film",
           imageURL: "/assets/image/images/sandy_neck_dunes.jpg",
-          thumbnailURL: "/assets/image/images/sandy_neck_dunes.jpg"
+          thumbnailURL: "/assets/image/thumbnails/sandy_neck_dunes.jpg"
+        },
+        {
+          title: "Magnanimous",
+          format: "6x7 Film",
+          imageURL: "/assets/image/images/sandy_neck_tree_silhouette.jpg",
+          thumbnailURL: "/assets/image/thumbnails/sandy_neck_tree_silhouette.jpg"
+        },
+        {
+          title: "Uprising",
+          format: "6x7 Film",
+          imageURL: "/assets/image/images/uprising.jpg",
+          thumbnailURL: "/assets/image/thumbnails/uprising.jpg"
+        },
+        {
+          title: "Now Playing!",
+          format: "6x7 Film",
+          imageURL: "/assets/image/images/ppac.jpg",
+          thumbnailURL: "/assets/image/thumbnails/ppac.jpg"
         }
       ]
     );

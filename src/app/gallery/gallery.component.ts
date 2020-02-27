@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../service/gallery.service';
 
+import baguetteBox from 'baguettebox.js';
+
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -14,6 +16,13 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImages();
+  }
+
+  ngAfterViewInit() {
+    const c = baguetteBox.run('.gallery', {
+      afterShow: () => {  }
+    });
+    console.log(c);
   }
 
   getImages(): void {

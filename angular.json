@@ -30,7 +30,8 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/material-icons/iconfont/material-icons.css"
+              "./node_modules/material-icons/iconfont/material-icons.css",
+              "./node_modules/baguettebox.js/dist/baguetteBox.css"
             ],
             "scripts": []
           },

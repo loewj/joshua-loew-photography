@@ -1,28 +1,9 @@
 * {
-    position: relative;
-    z-index: 3;
+    margin-top: 1em;
+}
+
+.material-icons {
+    font-size: 2em;
     color: white;
-}
-
-.menu-icon {
-    font-size: 2em;
-    margin-top: 30px;
-    margin-left: calc(2vw - 5px); 
     cursor: pointer;
-}
-
-ul {
-    padding: 0; /* To remove default left padding */
-}
-
-.menu-items-container {
-    height: 100vh;
-    width: 100vw;
-    font-size: 2em;
-    ul {
-        list-style-type: none;
-        li {
-            margin-bottom: 1em;
-        }
-    }
 }

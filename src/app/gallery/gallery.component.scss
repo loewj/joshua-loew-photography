@@ -1,10 +1,5 @@
-* {
-    position: relative;
-    z-index: 2;
+@import 'baguettebox.js/dist/baguetteBox.min.css';
+.gallery-container {
+    height: 90vh;
     color: white;
-    pointer-events: none;
-}
-
-.intro-container {
-    height: 100vh;
 }
