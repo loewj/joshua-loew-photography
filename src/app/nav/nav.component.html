@@ -1,14 +1,25 @@
 <div class='row navbar-container'>
-    <div class='col sm-4 text-left'>
-        <p>{{ timeHour }}<span [ngClass]="{'show-delimeter': showClockDelimeter, 'hide-delimeter': !showClockDelimeter}">:</span>{{timeMinute}} {{ timeAMPM }}</p>
+    <div class='col sm-2 text-left'>
+        <p>{{ timeHour }}<span
+                [ngClass]="{'show-delimeter': showClockDelimeter, 'hide-delimeter': !showClockDelimeter}">:</span>{{timeMinute}}
+            {{ timeAMPM }}</p>
     </div>
-    <div class='col sm-4 text-center'>
+    <div class='col sm-2 text-center'>
         <a (click)="toggleNav()" class="material-icons">
             <span *ngIf='navOpen === false'>menu</span>
             <span *ngIf='navOpen === true'>close</span>
         </a>
     </div>
-    <div class='col sm-4 text-right'>
+    <div class='col sm-8 text-right'>
         <p>{{ weatherString }}</p>
+    </div>
+</div>
+
+<div id="navOverlay" class="overlay">
+    <div class="overlay-content">
+        <a class='menu-item' (click)="toggleNav()" routerLink="/about" routerLinkActive="active">about</a>
+        <a class='menu-item' (click)="toggleNav()" routerLink="/photography" routerLinkActive="active">photograpghy</a>
+        <a class='menu-item' (click)="toggleNav()" routerLink="/design" routerLinkActive="active">design</a>
+        <a class='menu-item' (click)="toggleNav()" routerLink="/contact" routerLinkActive="active">contact</a>
     </div>
 </div>

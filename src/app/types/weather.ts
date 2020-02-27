@@ -8,7 +8,7 @@ export class Weather {
 
     setWeatherString() {
         const allConditions = (this.weatherData.weather.map((w) => w.description)).join(', ');
-        this.weatherString = `${ this.weatherData.name } | ${ this.KToF(this.weatherData.main.temp) }°F | ${ allConditions }`;
+        this.weatherString = `${ this.weatherData.name.toLocaleLowerCase() } | ${ this.KToF(this.weatherData.main.temp) }°F | ${ allConditions }`;
     }
 
     getWeatherString(): string {

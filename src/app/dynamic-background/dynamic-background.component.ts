@@ -39,7 +39,7 @@ export class DynamicBackgroundComponent implements OnInit {
       .fromTo(".content", 0.2, 
         {css: {background: "linear-gradient(-135deg,#fff,#fff)"}}, 
         {css: {background: "linear-gradient(-135deg,#0ff,#00f)"}}, '-=0.3')
-      .from('.menu-icon', 0.2, {autoAlpha:0}, '-=0.1')
+      .from('.navbar-container', 0.2, {autoAlpha:0}, '-=0.1')
     ;
 
   }

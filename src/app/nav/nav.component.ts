@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineMax, Power1 } from 'gsap';
+import { gsap, TimelineMax, Power1 } from 'gsap';
 import { WeatherService } from '../service/weather.service';
 import * as moment from 'moment';
 import { Weather } from '../types/weather';
@@ -19,18 +19,21 @@ export class NavComponent implements OnInit {
   public timeAMPM: string = '';
   private weather: Weather;
   public weatherString: string;
-  private hasLocation = false;
+  menuItems: never[];
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
 
+    this.menuItems = gsap.utils.toArray('.menu-item');
     this.navTimeline = new TimelineMax({
       paused: true, onComplete: () => {
-        
+
       }
     })
-    ;
+      .to('#navOverlay', 0.5, { height: '100%', ease: Power1.easeInOut })
+      .staggerFrom(gsap.utils.shuffle(this.menuItems), 0.3, {opacity: 0}, 0.1)
+      ;
 
     this.startClock();
     this.getLocation();
@@ -59,23 +62,19 @@ export class NavComponent implements OnInit {
     }, 1000);;
   }
 
-  getLocation(): void{
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position)=>{
-          const longitude = position.coords.longitude;
-          const latitude = position.coords.latitude;
-          this.weatherService.buildUrl(latitude, longitude);
-          this.weatherService.getWeather().subscribe(
-            res => {
-               this.weather = new Weather(res);
-               this.weatherString = this.weather.getWeatherString();            },
-            error => this.weather = error
-        );
-          this.hasLocation = true;
-        });
-    } else {
-       console.log("No support for geolocation")
-    }
+  getLocation(): void {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const longitude = position.coords.longitude;
+      const latitude = position.coords.latitude;
+      this.weatherService.buildUrl(latitude, longitude);
+      this.weatherService.getWeather().subscribe(
+        res => {
+          this.weather = new Weather(res);
+          this.weatherString = this.weather.getWeatherString();
+        },
+        error => this.weather = error
+      );
+    }, () => { this.weatherString = "Who said pricavy was dead?" });
   }
 
 }
