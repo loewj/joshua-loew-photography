@@ -26,11 +26,11 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
 
     this.menuItems = gsap.utils.toArray('.menu-item');
-    this.navTimeline = new TimelineMax({
+    this.navTimeline = (new TimelineMax({
       paused: true, onComplete: () => {
 
       }
-    })
+    }) as any) // <--- casting as any since there's a type issue with TimelineMax
       .to('#navOverlay', 0.5, { height: '100%', ease: Power1.easeInOut })
       .staggerFrom(gsap.utils.shuffle(this.menuItems), 0.3, {opacity: 0}, 0.1)
       ;

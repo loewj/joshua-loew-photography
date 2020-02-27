@@ -10,27 +10,33 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { DesignComponent } from './design/design.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {
     path: 'landing',
     component: DynamicBackgroundComponent,
+    data: {animation: 'Landing'}
   },
   {
     path: 'about',
-    component: IntroComponent
+    component: IntroComponent,
+    data: {animation: 'About'}
   },
   {
     path: 'photography',
-    component: GalleryComponent
+    component: GalleryComponent,
+    data: {animation: 'Photography'}
   },
   {
     path: 'design',
-    component: DesignComponent
+    component: DesignComponent,
+    data: {animation: 'Design'}
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    data: {animation: 'Contact'}
   },
   { 
     path: '',
@@ -53,6 +59,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
