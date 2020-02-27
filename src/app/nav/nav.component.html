@@ -1,6 +1,6 @@
 <div class='row navbar-container'>
     <div class='col sm-4 text-left'>
-        <p>{{ time }}</p>
+        <p>{{ timeHour }}<span [ngClass]="{'show-delimeter': showClockDelimeter, 'hide-delimeter': !showClockDelimeter}">:</span>{{timeMinute}} {{ timeAMPM }}</p>
     </div>
     <div class='col sm-4 text-center'>
         <a (click)="toggleNav()" class="material-icons">
@@ -9,6 +9,6 @@
         </a>
     </div>
     <div class='col sm-4 text-right'>
-        <p>{{ weather }}</p>
+        <p>{{ weatherString }}</p>
     </div>
 </div>

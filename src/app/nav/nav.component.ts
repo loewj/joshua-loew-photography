@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimelineMax, Power1 } from 'gsap';
 import { WeatherService } from '../service/weather.service';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
+import { Weather } from '../types/weather';
 
 @Component({
   selector: 'app-nav',
@@ -13,8 +13,12 @@ export class NavComponent implements OnInit {
 
   public navOpen = false;
   private navTimeline;
-  public time: string = '';
-  public weather: string = '';
+  public showClockDelimeter = false;
+  public timeHour: string = '';
+  public timeMinute: string = '';
+  public timeAMPM: string = '';
+  private weather: Weather;
+  public weatherString: string;
   private hasLocation = false;
 
   constructor(private weatherService: WeatherService) {}
@@ -26,8 +30,6 @@ export class NavComponent implements OnInit {
         
       }
     })
-    // .to('.content', 0.5, {css:{paddingTop:'5em'}, ease:Power1.easeInOut})
-    // .to('.navbar-item-container', 0, {autoAlpha: 1, display:'inherit'})
     ;
 
     this.startClock();
@@ -50,7 +52,10 @@ export class NavComponent implements OnInit {
 
   startClock() {
     setInterval(() => {
-      this.time = moment().format('h:mm a');
+      this.timeHour = moment().format('h');
+      this.timeMinute = moment().format('mm');
+      this.timeAMPM = moment().format('a');
+      this.showClockDelimeter = !this.showClockDelimeter;
     }, 1000);;
   }
 
@@ -62,9 +67,8 @@ export class NavComponent implements OnInit {
           this.weatherService.buildUrl(latitude, longitude);
           this.weatherService.getWeather().subscribe(
             res => {
-               this.weather = res; 
-               console.log(this.weather);
-            },
+               this.weather = new Weather(res);
+               this.weatherString = this.weather.getWeatherString();            },
             error => this.weather = error
         );
           this.hasLocation = true;
