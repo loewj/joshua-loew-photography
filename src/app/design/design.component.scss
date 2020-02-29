@@ -1,4 +1,28 @@
 .design-container {
-    height: 100vh;
+    color: white;
+}
+
+.project-entry {
+    color: black;
+    cursor: pointer;
+    &:hover {
+        color: black;
+    }
+}
+
+.project-container {
+    height: calc(100vh - 100px);
+    width: 90vw;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+      }
+}
+
+.material-icons {
+    cursor: pointer;
+}
+
+.joint-dj-link {
     color: white;
 }

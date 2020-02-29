@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesignComponent implements OnInit {
 
+  public projects = Project;
+  public viewing: Project = null;
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
+  setProject(proj: Project = null) {
+    this.viewing = proj;
+  }
+
+}
+
+enum Project {
+  PocketCasts,
+  GoldenHour,
+  Omcom,
+  JointDJ
 }

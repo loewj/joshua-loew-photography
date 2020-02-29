@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../service/gallery.service';
 
 import baguetteBox from 'baguettebox.js';
-import { gsap } from 'gsap';
+import { gsap, Power1 } from 'gsap';
 
 @Component({
   selector: 'app-gallery',
@@ -32,7 +32,7 @@ export class GalleryComponent implements OnInit {
 
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
-          gsap.to(entry.target, 1, {opacity: 1});
+          gsap.to(entry.target, 1, {opacity: 1, ease: Power1.easeInOut});
         } else {
           gsap.to(entry.target, 0, {opacity: 0});
         }

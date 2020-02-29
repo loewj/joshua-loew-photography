@@ -1,9 +1,671 @@
-<section class="design-container">
+<section class="design-container mt-5">
     <div class="d-flex align-items-center justify-content-center h-100">
         <div class="d-flex flex-column">
-            <div class='row'>
-                <div class='col'>Design stuff</div>
+
+            <div class='project-directory' *ngIf="viewing === null">
+                <div class='row mb-5'>
+                    <div class='col text-center'>
+                        <h1>design</h1>
+                    </div>
+                </div>
+                <div class='row mb-1'>
+                    <div class='col text-center'>
+                        <p>Click on a project to view</p>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <div class="list-group">
+                            <a (click)="setProject(projects.PocketCasts)"
+                                class="project-entry list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Pocket Casts</h5>
+                                </div>
+                                <p class="mb-1">Suggested design tweaks for my go-to podcase client.</p>
+                            </a>
+                            <a (click)="setProject(projects.GoldenHour)"
+                                class="project-entry list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Golden Hour</h5>
+                                </div>
+                                <p class="mb-1">Suggested design tweaks for an application that I use regularly in my
+                                    photohraphy.</p>
+                            </a>
+                            <a (click)="setProject(projects.Omcom)"
+                                class="project-entry list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Omcom</h5>
+                                </div>
+                                <p class="mb-1">A chat-based service that functions in a similar fashion to ride
+                                    sharing.</p>
+                            </a>
+                            <a (click)="setProject(projects.JointDJ)"
+                                class="project-entry list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">JointDJ</h5>
+                                </div>
+                                <p class="mb-1">A fully functional webapp that features a desktop and mobile interface.
+                                    The app functions as a jukebox, allowing multiple users to curate a shared, live
+                                    playlist.
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='project-container' *ngIf="viewing !== null">
+                <div class='row'>
+                    <div class='col'>
+                        <a (click)="setProject()" class="material-icons">
+                            <span>keyboard_backspace</span>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf='viewing === projects.PocketCasts'>
+                    <ng-container *ngTemplateOutlet="pocketCasts"></ng-container>
+                </div>
+                <div *ngIf='viewing === projects.GoldenHour'>
+                    <ng-container *ngTemplateOutlet="goldenHour"></ng-container>
+                </div>
+                <div *ngIf='viewing === projects.Omcom'>
+                    <ng-container *ngTemplateOutlet="omcom"></ng-container>
+                </div>
+                <div *ngIf='viewing === projects.JointDJ'>
+                    <ng-container *ngTemplateOutlet="jointDJ"></ng-container>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<ng-template #pocketCasts>
+
+    <div class="row">
+
+        <div class="col-sm">
+            <h1>Pocket Casts</h1>
+            <p>
+                Pocket Casts has been my go-to mobile podcast client for the past several years. It was among the first
+                Android apps to implement Google's Material Design, and it's small price tag meant there were no in-app
+                advertisements. It gets a lot of things right, but there are some areas that could be more intuitive.
+            </p>
+        </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-sm'>
+            <p>
+                I’ve focused on the “Filters” tab. When selected, you're greeted with a list of filters. Tapping on a
+                given filter will present the user with podcasts and episodes that meet the criteria of their desired
+                filter. Upon closer inspection, the filter setting organization can be confusing. In the provided
+                filters, you would think that the "Downloaded" filter and its universal download icon would return...
+                well... downloaded podcasts. That is not always the case. The app ships with a set of predefined
+                filters. Those filters, however, are mutable, meaning you can alter the downloaded filter to include
+                podcasts that don't actually exist locally. In my personal user experience, I must’ve changed the
+                parameters of the predefined download filter at some point and forgotten, leaving me very confused when
+                some podcasts in my downloaded list were not actually downloaded. It's part user error, but I figured
+                out a way to eliminate the potential for user error and subsequent frustration. To remedy this, I would
+                disallow users from editing obvious filters such as “Downloaded” and “In Progress,” and reserve the
+                filter screen for editing and creating custom filters.
+            </p>
+            <p>
+                In the existing version of the app, when you decide which filter you want to apply or edit, you're met
+                with a screen containing your filtered podcasts, and a strip on top that lets you edit said filter,
+                making the screen multi-purpose. You can edit and view filtered podcasts. I’ve removed podcasts from
+                this screen to yield two improvements: simplifying the information displayed and eliminating unnecessary
+                user confusion.
+            </p>
+
+            <p>
+                The original implementation of filters is depicted in the screenshots to the right, and my improvements
+                in the sketch below.
+            </p>
+
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/screenshots/filters.png"
+                    alt="Pocket Casts Filter Screen">
+                <div class="caption text-center">
+                    <h5>Pocket Casts Filter Screen</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/screenshots/unplayed_filter.png"
+                    alt="Pocket Casts Unplayed Filter">
+                <div class="caption text-center">
+                    <h5>Pocket Casts Unplayed Filter</h5>
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <div class='row'>
+        <div class='col-sm'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/pocket_casts_screen_2.jpg"
+                    alt="Redesigned 'Filters' Sketch">
+                <div class="caption text-center">
+                    <h5>Redesigned 'Filters' Sketch</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/my filters.png"
+                    alt="Redesigned Pocket Casts Filter Screen">
+                <div class="caption text-center">
+                    <h5>Redesigned Pocket Casts Filter Screen</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/my filters – edit.png"
+                    alt="User Appying a Filter on the 'My Podcasts' Tab">
+                <div class="caption text-center">
+                    <h5>User Appying a Filter on the 'My Podcasts' Tab</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-sm'>
+            <p>
+                It frees up space for filter options to be presented in a cleaner fashion with less confusing language.
+                In my redesign, by dedicating the entire screen to filter options, I was able to use language that was
+                more clear. As you can see below, instead of the ambiguous “Unplayed, In Progress” chip at the top of
+                the screen in the current version, I was able to create a list with three separate checkboxes, one for
+                each available option.
+            </p>
+            <p>
+                In addition, by including podcasts in the filter screen, it has the potential to be unclear what’s
+                actually being filtered. Am I filtering just the podcasts I'm subscribed to? Or, the entire Pocket Casts
+                catalog? By eliminating podcasts from this screen, you subsequently eliminate confusion.
+            </p>
+            <p>
+                Since the filter tab no longer returns podcasts, your custom filters can be applied on the "My Podcasts"
+                screen. Here, you can apply your custom filters by tapping the new filter icon at the top of the screen.
+                To deselect a filter, either collapse the filters by tapping on the icon again, or, by tapping the "X"
+                on the active filter. Here is what the new screens looks like:
+            </p>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class="col-sm">
+
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/pocket_casts_screen_1.jpg"
+                    alt="Redesigned 'My Podcasts' Sketch">
+                <div class="caption text-center">
+                    <h5>Redesigned 'My Podcasts' Sketch</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='row mb-5'>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/my podcasts - filters.png"
+                    alt="Redesigned 'My Podcasts' Screen">
+                <div class="caption text-center">
+                    <h5>Redesigned 'My Podcasts' Screen</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-sm'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/pocket_casts/redesign/pocket_casts_user.jpg"
+                    alt="Pocket Casts Unplayed Filter">
+                <div class="caption text-center">
+                    <h5>Redesigned Pocket Casts Edit Filter Screen</h5>
+                </div>
+            </div>
+
+            <p>
+                Selecting a filter will hide the image tiles for the podcast that does not meet the selected filter
+                requirements. This cleans up the filter tab to only show content relevant to creating and editing
+                filters, making the purpose of both the "My Podcasts" and "Filters" tabs more explicit.
+            </p>
+
+            <p>
+                By streamlining each screen, I was able to improve user experience by creating a more fluid, intuitive,
+                and simple design that eliminates the risk of common user error and unnecessary frustration.
+            </p>
+
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #goldenHour>
+    <div class="row">
+
+        <div class="col-sm">
+            <h1>Golden Hour</h1>
+            <p>
+                Golden Hour is a mobile app that lets you view the time and duration of different phases of light. It's
+                extremely useful in nature and landscape photography. The application has all the necessary features, is
+                free, and contains no ads. Some actions, however, could be easier to find or perform. Let's start by
+                taking a look at the main screen, which they call “The Grid.”.
+            </p>
+            <p>
+                This is what greets the user when the app starts up. It’s more of a chart than a grid. At first glance,
+                it takes a minute to figure out exactly what you're looking at because of the lack of headers. The
+                screen is cluttered with some information that isn't especially useful (such as the UTC offset and exact
+                latitude and longitude of my selected location). Perhaps there are some circumstances under which this
+                is necessary, but in most cases, it’s distracting more than anything.
+            </p>
+            <p>
+                Certain navigation in the app could be more intuitive. For instance, finding the map screen takes a
+                little exploring. In order to get to the map, you need to tap the menu dots at the top right of the
+                screen and select "Map" from the context menu. Given that this view is equally as important as the grid
+                for determining things such as when the sun will hit the face of a certain building, it should be easier
+                to see.
+            </p>
+        </div>
+
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/screenshots/grid.png"
+                    alt="Golden Hour 'Grid' Screen">
+                <div class="caption text-center">
+                    <h5>Golden Hour 'Grid' Screen</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/screenshots/map.png"
+                    alt="Golden Hour 'Map' Screen">
+                <div class="caption text-center">
+                    <h5>Golden Hour 'Map' Screen</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-sm'>
+            <p>
+                The last area I see for improvement, again, has to do with the map view. In order to see the trajectory
+                of the sun on the map, your pin has to be in the middle of your point of interest. In order to change
+                your POI, you need to tap and hold the pin to move it, which makes it hard to position it just right. In
+                a perfect world, the pin should stay centered as you navigate the map and offer a button to recenter it.
+            </p>
+            <p>
+                I have solved the three above issues by stripping away non-essential information from the grid view,
+                adding headers, improving the navigation through the addition of a navbar for easy switching between the
+                grid and map view, and by simplifying the map. As another improvement, I have also developed an
+                additional screen that allows the user to select their desired light based off of a gradient scale. The
+                new screen creates a color visualization of the phases of light, letting the user tap the desired color.
+                Once the desired color is selected, information about that phase is displayed at the top of the screen.
+                The first image depicts my changes to the grid, and the second one is a sketch of the new screen I'd
+                like to introduce.
+            </p>
+        </div>
+        <div class='col-sm'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail"
+                    src="/assets/image/portfolio/golden_hour/redesign/person_using_golden_hour.jpg"
+                    alt="A User Viewing the New Grid">
+                <div class="caption text-center">
+                    <h5>A User Viewing the New Grid</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-sm'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/redesign/golden_hour_screen_1.png"
+                    alt="Redesigned Golden Hour Sketch">
+                <div class="caption text-center">
+                    <h5>Redesigned Golden Hour Sketch</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-4'>
+            <p>
+                As you can see, the new grid is less ambiguous than the original and the top of the display is less
+                cluttered. As you can see on the redesign, the grid tab will now include a button that lets the user
+                toggle this new view. When opened, the gray line depicts the current time. Tapping or dragging anywhere
+                on the scale moves the red line out, and information about that phase appears on the top of the screen.
+                Tapping the reset icon sets the display back to the current time. At the top of the screen, you can see
+                the time of sunrise, sunset, current time, the start of the current phase, end of the current phase, and
+                the duration of the current phase.
+            </p>
+            <p>
+                In alignment with my other improvements, I also updated the aesthetic of the settings tab to match the
+                rest of my redesign.
+            </p>
+        </div>
+        <div class='col-sm-4'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/redesign/grid gradient.png"
+                    alt="Redesigned Golden Hour Graidnet Screen">
+                <div class="caption text-center">
+                    <h5>Redesigned Golden Hour Gradient Screen</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-sm-4'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/redesign/map.png"
+                    alt="Redesigned Golden Hour Map Screen">
+                <div class="caption text-center">
+                    <h5>Redesigned Golden Hour Map Screen</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-4'>
+            <p>
+                Finally, I largely left the setings tab alone. I only updated the aesthetic to match the rest of my
+                redesign.
+            </p>
+        </div>
+        <div class='col-sm-4'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/screenshots/settings_pane.png"
+                    alt="Golden Hour Settings Pane">
+                <div class="caption text-center">
+                    <h5>Golden Hour Settings Pane</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-sm-4'>
+            <div class="thumbnail text-center">
+                <img class="img-thumbnail" src="/assets/image/portfolio/golden_hour/redesign/pullout.png"
+                    alt="Redesigned Golden Hour Settings Pane">
+                <div class="caption text-center">
+                    <h5>Redesigned Golden Hour Settings Pane</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #omcom>
+    <div class="row">
+
+        <div class="col-sm">
+            <h1>Omcom</h1>
+            <p>
+                Omcom is an application that I designed myself, but have yet to implement. It is
+                a chat-based service that functions in a similar fashion to a ride
+                sharing app.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/omcom_logo.png" alt="Omcom Splashscreen">
+                <div class="caption text-center">
+                    <h5>Omcom Logo</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <p>
+                Today, smartphones are ubiquitous in many parts of the world. Which means there
+                are billions of cameras floating around our streets, restaurants, hiking trails,
+                and beyond. Omcom aims to provide a one-to-many video streaming platform
+                that connects users to cameras in places they want to see. Are you curious how
+                the
+                traffic looks on your morning commute? If there's a table at that hip restaurants
+                you like that doesn't take reservations? What the trail conditions are like?
+                Omcom is your window to the world!
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <p>
+
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm align-self-center">
+            <div class="card-block">
+                <p>
+                    Users can connect or start sharing instantly without the need to sign
+                    in or create an account, shortening the barrier to entry and getting more
+                    active users on the platform. Tapping the connect button will bring you to a
+                    map showing users who are either currently streaming or ready to stream.
+                </p>
+                <p>
+                    A host's activity level is denoted by the color of their pin on the map.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Landing.png" alt="Splashscreen">
+                <div class="caption text-center">
+                    <h5>Splashscreen</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Browse Map.png" alt="Browse Map">
+                <div class="caption text-center">
+                    <h5>Browse Map</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm">
+            <p>
+                Creating an account allows you to customize your profile (add an avatar and
+                bio), record your stats, and follow other users to easily find their general
+                location on the map when they're active.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Browse Map Selected Inactive User.png" alt="Inactive User">
+                <div class="caption text-center">
+                    <h5>Inactive User</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Browse Map Selected Active User.png"
+                        alt="Active User">
+                <div class="caption text-center">
+                    <h5>Active User</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Profile.png" alt="Profile Page">
+                <div class="caption text-center">
+                    <h5>Profile Page</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm align-self-center">
+            <div class="card-block">
+                <p>
+                    A user who is visible, but not currently hosting, will be sent a request if
+                    someone tries to connect with them. Once connected, some basic information
+                    is
+                    displayed about the stream such as the host and number of connected users.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Request.png"
+                        alt="Requesting a Stream">
+                <div class="caption text-center">
+                    <h5>Requesting a Stream</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Connected No Controls.png"
+                        alt="Connected, no Controls">
+                <div class="caption text-center">
+                    <h5>Connected, no Controls</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm align-self-center">
+            <div class="card-block">
+                <p>
+                    A major function of Omcom is being able to interact with other users and the
+                    host. The initial application design features a chat function that can be
+                    revealed by tapping on the screen.
+                </p>
+                <p>
+                    The chat can be expanded or collapsed to view more or less of the thread.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Connected Controls.png"
+                        alt="Connected, Show Controls">
+                <div class="caption text-center">
+                    <h5>Connected, Show Controls</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Connected Show Chat.png"
+                        alt="Connected, Show Chat">
+                <div class="caption text-center">
+                    <h5>Connected, Show Chat</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm align-self-center">
+            <div class="card-block">
+                <p>
+                    And finally, here's a view of the host's screen, complete with some basic data about their stream,
+                    and buttons to reverse the camera or stop the stream.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail" src="/assets/image/portfolio/omcom/screens/Hosting.png"
+                        alt="Connected, Show Controls">
+                <div class="caption text-center">
+                    <h5>Hosting</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm"></div>
+
+    </div>
+</ng-template>
+
+<ng-template #jointDJ>
+    <div class="row">
+
+        <div class="col-sm">
+            <h1><a class='joint-dj-link' href="https://jointdj.com" target="_blank" data-hover>JointDJ</a></h1>
+            <p>
+                JointDJ is a unique webapp that features a desktop and mobile interface. The
+                goal of the application is to function as a jukebox, allowing multiple users to
+                curate a shared, live playlist.
+            </p>
+            <p>
+                It works like this: Someone creates an event. A unique, human readable code is
+                generated for that event. Then, anyone with the code can navigate to the player
+                for that event. Multiple users can open the player separately on their own
+                computers, or, the event can be displayed on a shared screen such as a TV using
+                a
+                Chromecast or similar device. The player prominently displays the event code, so
+                if
+                the application is used in a public setting, anyone can add songs using their
+                smartphone. Anyone with the code can manipulate the player, and different
+                privileges can be granted or revoked by the user who created the event.
+            </p>
+            <p>
+                Since most users adding to the playlist will be using a smartphone, the
+                controller interface is implemented in a mobilefirst framework (Ionic) that
+                responds
+                well to tapping, dragging, and swiping.
+            </p>
+            <p>
+                The app is currently live! Click the title to launch it now.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row design-image-container">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <div class="thumbnail text-center">
+                    <img class="img-thumbnail"
+                        src="/assets/image/portfolio/joint_dj/joint_dj_landing.png"
+                        alt="JointDJ Landing">
+                <div class="caption text-center">
+                    <h5>Landing Page (where events are created)</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+</ng-template>
