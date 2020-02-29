@@ -1,14 +1,78 @@
-<section class="gallery-container">
+<section class="gallery-container mt-5">
   <div class="d-flex align-items-center justify-content-center h-100">
-    <div class="d-flex flex-column">
-      <div class="gallery row">
-        <div *ngFor='let image of images; index as i'>
-          <div class="clearfix" *ngIf="i % 3 == 0"></div>
-          <a href='{{ image.imageURL }}'>
-            <img width="200" height="200" class='img-thumbnail' src="{{ image.thumbnailURL }}">
-          </a>
+    <div class='gallery-content-container'>
+
+      <div class='row'>
+        <div class='col text-center'>
+          <h1>photography</h1>
         </div>
       </div>
+
+      <div class='row m-3'>
+        <div class='col-sm-2'></div>
+        <div class='col-sm-8'>
+          <p>
+            It’s hard to pinpoint when I first expressed an interest in photography. I remember having a few
+            disposable
+            cameras throughout my youth, and picking up my father’s DSLR for the first time to experiment with the
+            different shooting modes in my early teens. Once I discovered manual mode, I was fascinated by each
+            setting’s impact on the final image.
+
+          </p>
+          <p>
+            I continued to learn the basics and photograph on and off for the next decade or so, but never in a
+            serious
+            capacity. As I got older, spending more time outdoors became important to me. I began to notice more
+            subtle
+            beauty around me, and that catalyzed my love affair with nature and landscape photography. I was eager to
+            go
+            out on walks with my camera around my neck. My love for the outdoors and photography grew as one unified
+            passion; I interchangeably use one as an excuse to partake in the other. This began my extensive (almost
+            obsessive) research of the process behind nature and landscape photography and its community.
+          </p>
+          <p>
+            I am inspired by historical greats and contemporaries such as Nick Carver, Alex Burke, Ben Horne, and
+            David
+            Brookover. As recently as a few years ago, I ignorantly viewed film photography as a relic of the past.
+            Nothing more than expensive, kitschy, and outdated. Now, with the help and encouragement of other
+            photographers, I recognize just how special it is. It requires devotion and patience. While digital
+            cameras
+            still demand care when it comes to subject and composition, they obscure much of what happens after the
+            shutter is released. While the scientific process of film is magical, it’s far from mysterious. If you put
+            in the time and effort to understand each step along the way from unexposed film, to latent image, to
+            finished photograph, it’s an incredibly rewarding medium.
+          </p>
+          <p>
+            Film photography allows me to venture into the wilderness without having to charge batteries or look at
+            LCD
+            screens. It allows me to work with different formats and gorgeous color palettes unrivaled by digital
+            cameras. It allows me to divorce myself from the scene between exposing the frame and viewing the
+            processed
+            inverted negative or positive. Most importantly, it forces me to slow down and consider the scene before
+            me,
+            how the changing light affects it, what settings I should use to achieve my creative vision, and why this
+            particular place and time is worthy of photographing.
+          </p>
+          <p>
+            Thanks for stopping by, and I hope you enjoy my work!
+          </p>
+        </div>
+        <div class='col-sm-2'></div>
+      </div>
+
+      <div class='d-flex justify-content-center'>
+        <div class="gallery">
+          <p class='text-center'>Click an image to enter fullscreen</p>
+          <div *ngFor='let image of images' class='image-container'>
+            <a href='{{ image.imageURL }}'>
+              <img width="700" height="700" class="img-thumbnail" src="{{ image.thumbnailURL }}">
+            </a>
+            <p class='text-center'>{{ image.title }} | {{ image.format }}</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
 </section>

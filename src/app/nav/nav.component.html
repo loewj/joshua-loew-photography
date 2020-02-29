@@ -10,7 +10,7 @@
             <span *ngIf='navOpen === true'>close</span>
         </a>
     </div>
-    <div class='col sm-8 text-right'>
+    <div class='col sm-8 text-right d-none d-lg-block'>
         <p>{{ weatherString }}</p>
     </div>
 </div>
@@ -19,7 +19,7 @@
     <div class="overlay-content">
         <a class='menu-item' (click)="toggleNav()" routerLink="/about" routerLinkActive="active">about</a>
         <a class='menu-item' (click)="toggleNav()" routerLink="/photography" routerLinkActive="active">photograpghy</a>
-        <a class='menu-item' (click)="toggleNav()" routerLink="/design" routerLinkActive="active">design</a>
+        <!-- <a class='menu-item' (click)="toggleNav()" routerLink="/design" routerLinkActive="active">design</a> -->
         <a class='menu-item' (click)="toggleNav()" routerLink="/contact" routerLinkActive="active">contact</a>
     </div>
 </div>

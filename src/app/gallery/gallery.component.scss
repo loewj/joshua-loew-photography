@@ -1,5 +1,12 @@
 @import 'baguettebox.js/dist/baguetteBox.min.css';
 .gallery-container {
-    height: 90vh;
     color: white;
+}
+
+.gallery-content-container {
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+      }
 }

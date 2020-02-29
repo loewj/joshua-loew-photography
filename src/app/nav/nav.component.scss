@@ -58,3 +58,8 @@
   display: block;
   transition: 0.3s;
 }
+
+.menu-item.active::before {
+  content: "-> ";
+  font-size: smaller;
+}
