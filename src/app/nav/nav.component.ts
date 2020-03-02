@@ -74,7 +74,7 @@ export class NavComponent implements OnInit {
         },
         error => this.weather = error
       );
-    }, () => { this.weatherString = "Who said pricavy was dead?" });
+    }, () => { this.weatherString = "Who said privacy was dead?" });
   }
 
 }

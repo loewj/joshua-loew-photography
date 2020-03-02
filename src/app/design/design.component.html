@@ -2,6 +2,14 @@
     <div class="d-flex align-items-center justify-content-center h-100">
         <div class="d-flex flex-column">
 
+            <div class='row' *ngIf="viewing !== null">
+                <div class='col'>
+                    <a (click)="setProject()" class="material-icons">
+                        <span>keyboard_backspace</span>
+                    </a>
+                </div>
+            </div>
+
             <div class='project-directory' *ngIf="viewing === null">
                 <div class='row mb-5'>
                     <div class='col text-center'>
@@ -55,13 +63,6 @@
             </div>
 
             <div class='project-container' *ngIf="viewing !== null">
-                <div class='row'>
-                    <div class='col'>
-                        <a (click)="setProject()" class="material-icons">
-                            <span>keyboard_backspace</span>
-                        </a>
-                    </div>
-                </div>
                 <div *ngIf='viewing === projects.PocketCasts'>
                     <ng-container *ngTemplateOutlet="pocketCasts"></ng-container>
                 </div>

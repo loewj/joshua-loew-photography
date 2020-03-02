@@ -1,6 +1,9 @@
 .contact-container {
-    height: 90vh;
     color: white;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+      }
 }
 
 .link-container {
