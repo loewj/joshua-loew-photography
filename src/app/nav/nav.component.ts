@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
       ;
 
     this.startClock();
-    this.getLocation();
+    // this.getLocation();
 
   }
 
